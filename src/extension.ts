@@ -63,6 +63,11 @@ export function activate(context: vscode.ExtensionContext) {
     var content = document.getText(range);
     var formatted = standardFormat.transform(content);
     var result: vscode.TextEdit[] = [];
-    edit.replace(range, formatted);
+    // edit.replace(range, formatted);
+    if (formatted) {
+      result.push(new vscode.TextEdit(range, formatted));
+    }
+
+  return result;
   }))
 }
